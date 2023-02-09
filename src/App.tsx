@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TodoListItem } from './types';
 import { Button, Table } from 'reactstrap';
+import { TodoItemTableRow } from './ui/TodoItems';
 
 const App = () => {
   const [ todoList, setTodoList ] = React.useState<TodoListItem[]>([
@@ -49,15 +50,10 @@ const App = () => {
         <tbody>
           {/* for each item in the todoList, render a new row in the table */}
           {todoList.map((item,index) => (
-            <tr key={index}>
-              <td>{item.label}</td>
-              <td>
-                <input type="checkbox"
-                  checked={item.isCompleted}
-                  onChange={()=>toggleItemCompletion(index)}
-                />
-              </td>
-            </tr>
+            <TodoItemTableRow key={index}
+              item={item}
+              onToggle={()=>toggleItemCompletion(index)}
+            />
           ))}
         </tbody>
       </Table>
