@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from 'reactstrap';
 import { TodoListItem } from '../types';
 
 export interface TodoItemTableRowProps {
@@ -12,7 +13,12 @@ export const TodoItemTableRow: React.FunctionComponent<TodoItemTableRowProps> = 
     <td>{props.item.label}</td>
     <td>
       { props.useButton ? (
-        <button onClick={() => props.onToggle()}>{props.item.isCompleted ? 'Completed' : 'Mark Done'}</button>
+        <Button
+          color={props.item.isCompleted ? "success" : "secondary"}
+          onClick={() => props.onToggle()}
+        >
+        {props.item.isCompleted ? 'Completed' : 'Mark Done'}
+        </Button>
       ) : (
         <input type="checkbox"
           checked={props.item.isCompleted}

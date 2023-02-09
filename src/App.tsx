@@ -42,7 +42,7 @@ const App = () => {
   
   return (
     <div>
-      <button onClick={()=>setUseButtons(!useButtons)}>{useButtons ? 'Use checkboxes' : 'Use buttons'}</button>
+      <Button onClick={()=>setUseButtons(!useButtons)}>{useButtons ? 'Use checkboxes' : 'Use buttons'}</Button>
       <Table striped bordered hover>
         <thead>
           <tr>
