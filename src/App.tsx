@@ -53,6 +53,7 @@ const App = () => {
             <TodoItemTableRow key={index}
               item={item}
               onToggle={()=>toggleItemCompletion(index)}
+              useButton={true}
             />
           ))}
         </tbody>
