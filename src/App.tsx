@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TodoListItem } from './types';
-import { Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 
 const App = () => {
   const [ todoList, setTodoList ] = React.useState<TodoListItem[]>([
@@ -18,6 +18,15 @@ const App = () => {
         isCompleted: !item.isCompleted
       }
     })
+    setTodoList(updatedList);
+  }
+
+  const addNewListItem = (itemLabel:string) => {
+    const updatedList = todoList.concat([{
+      label: itemLabel,
+      isCompleted: false
+    }]);
+
     setTodoList(updatedList);
   }
   
@@ -45,6 +54,7 @@ const App = () => {
           ))}
         </tbody>
       </Table>
+      <Button onClick={()=>addNewListItem(`Item #${Math.random()}`)}>Add Random Item</Button>
     </div>
   )
 }
