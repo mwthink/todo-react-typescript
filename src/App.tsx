@@ -8,7 +8,11 @@ const App = () => {
     {label:'Pickup mail', isCompleted: false},
   ]);
 
-  const markItemCompleted = (itemIndex:number) => {
+  /**
+   * This function will toggle the isCompleted state of an item in the list
+   * @param itemIndex Array index of the target item
+   */
+  const toggleItemCompletion = (itemIndex:number) => {
     const updatedList = todoList.map((item, index) => {
       if(index != itemIndex){
         return item;
@@ -20,7 +24,10 @@ const App = () => {
     })
     setTodoList(updatedList);
   }
-
+  /**
+   * This function will add a new item to the TODO list
+   * @param itemLabel Label of the new item in the list
+   */
   const addNewListItem = (itemLabel:string) => {
     const updatedList = todoList.concat([{
       label: itemLabel,
@@ -47,7 +54,7 @@ const App = () => {
               <td>
                 <input type="checkbox"
                   checked={item.isCompleted}
-                  onChange={()=>markItemCompleted(index)}
+                  onChange={()=>toggleItemCompletion(index)}
                 />
               </td>
             </tr>
