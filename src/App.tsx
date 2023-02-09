@@ -4,6 +4,8 @@ import { Button, Table } from 'reactstrap';
 import { TodoItemTableRow } from './ui/TodoItems';
 
 const App = () => {
+
+  const [ useButtons, setUseButtons ] = React.useState(false);
   const [ todoList, setTodoList ] = React.useState<TodoListItem[]>([
     {label:'Get groceries', isCompleted: false},
     {label:'Pickup mail', isCompleted: false},
@@ -40,6 +42,7 @@ const App = () => {
   
   return (
     <div>
+      <button onClick={()=>setUseButtons(!useButtons)}>{useButtons ? 'Use checkboxes' : 'Use buttons'}</button>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -53,7 +56,7 @@ const App = () => {
             <TodoItemTableRow key={index}
               item={item}
               onToggle={()=>toggleItemCompletion(index)}
-              useButton={true}
+              useButton={useButtons}
             />
           ))}
         </tbody>
