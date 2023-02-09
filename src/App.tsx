@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TodoListItem } from './types';
+import { Table } from 'reactstrap';
 
 const App = () => {
   const [ todoList, setTodoList ] = React.useState<TodoListItem[]>([
@@ -22,7 +23,7 @@ const App = () => {
   
   return (
     <div>
-      <table>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Label</th>
@@ -43,7 +44,7 @@ const App = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }
